@@ -1,19 +1,16 @@
 
+'use client';
 
-
-import { notFound } from 'next/navigation';
-import ProductDetails from '@/app/components/productDetails';
+import { useParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { client } from '@/sanity/lib/client';
-import Product from '@/type';
+import ProductDetails from '@/app/components/productDetails';
+import Product from '@/type';  // Ensure the Product type is defined correctly
 
-//  Define correct `PageProps`
-interface PageProps {
-  params: { slug: string }; //  Ensure `params` is `{ slug: string }` (not a Promise)
-}
 
-//  Fetch product from Sanity
+// Function to fetch product by slug
 async function getProduct(slug: string): Promise<Product | null> {
-  const query = `*[_type == 'food' && slug.current == "${slug}"] {
+  const query = `*[_type == 'food' && slug.current == "${slug}"] | order(_createdAt asc) {
     _id,
     name,
     category,
@@ -23,36 +20,46 @@ async function getProduct(slug: string): Promise<Product | null> {
     "slug": slug.current,
     "imageUrl": image.asset->url,
     description,
-    available
+    available,
+    stockLevel
   }`;
 
-  const products: Product[] = await client.fetch(query);
+  const products = await client.fetch(query);
   return products.length > 0 ? products[0] : null;
 }
 
-//  Fix TypeScript Error: Ensure `params` is properly destructured
-const ProductDetailPage = async ({ params }: PageProps) => {
-  if (!params?.slug) return notFound(); //  Ensure slug exists
+// Component for fetching and displaying product details
+const ProductDetailPage = () => {
+  const { slug } = useParams();  // Extract 'slug' from the URL parameters (for App Router)
+  const [product, setProduct] = useState<Product | null>(null);
 
-  const product = await getProduct(params.slug);
-  if (!product) return notFound();
+  useEffect(() => {
+    if (slug) {
+      const fetchData = async () => {
+        console.log('Fetching product for slug:', slug); // Debugging statement
+        const productData = await getProduct(slug as string);
+        setProduct(productData);
+        console.log('Fetched product:', productData); // Debugging statement
+      };
+
+      fetchData();
+    }
+  }, [slug]);
+
+  if (!slug) {
+    return <p>Loading...</p>;  // Show a loading message until the slug is available
+  }
+
+  if (!product) {
+    return <p>No product found for this slug. Please check the URL.</p>;  // Display message if no product is found
+  }
 
   return (
     <div>
-      <ProductDetails product={product} key={product._id} />
+      {/* Passing the fetched product data to ProductDetails component */}
+      <ProductDetails product={product} />
     </div>
   );
 };
 
 export default ProductDetailPage;
-
-//  Fix `generateStaticParams` to correctly return an array of `{ slug: string }`
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const query = '*[_type == "food"] { "slug": slug.current }';
-  const products: { slug: string }[] = await client.fetch(query);
-  
-  return products.map((product) => ({
-    slug: product.slug,
-  }));
-}
-

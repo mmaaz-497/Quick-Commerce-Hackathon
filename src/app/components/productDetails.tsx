@@ -1,26 +1,11 @@
 
 
-
-
-
 'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuNavebar from './2Navebar';
 import Product from '@/type';
-
-export function Page() {
-  const breadcrumbs = [
-    { name: "Home", href: "/" },
-    { name: "Shop Details", href: "" },
-  ];
-
-  return (
-    <div>
-      <MenuNavebar title="Shop Details" breadcrumbs={breadcrumbs} />
-    </div>
-  );
-}
 
 const ProductDetails = ({ product }: { product: Product }) => {
   const handleClick = (product: Product) => {
@@ -88,5 +73,3 @@ const ProductDetails = ({ product }: { product: Product }) => {
 };
 
 export default ProductDetails;
-
-
