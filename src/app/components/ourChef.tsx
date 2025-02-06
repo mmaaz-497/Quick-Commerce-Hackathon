@@ -1,8 +1,7 @@
-
-
 import React from 'react';
 import { client } from '@/sanity/lib/client';
 import Image from 'next/image';
+import Product from '@/type';
 
 async function OurChef() {
   const query = `*[_type == 'chef'] | order(_createdAt asc) {
@@ -22,7 +21,7 @@ async function OurChef() {
   return (
     <div className="flex justify-center px-4">
       <div className="w-full max-w-[1200px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-        {data.map((chef: any) => (
+        {data.map((chef:Product) => (
           <div key={chef._id} className="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center text-center">
             <div className="w-full h-auto">
               <Image

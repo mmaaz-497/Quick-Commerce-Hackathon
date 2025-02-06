@@ -4,24 +4,6 @@ import AboutFoodMenu from "../components/aboutFoodMenu";
 import AboutHero from "../components/aboutHero";
 import AboutWhyChoose from "../components/aboutWhyChoose";
 
-
-
-export function Page (){
-  const breadcrumbs = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-  ];
-
-  return (
-    <div>
-      <MenuNavebar title="About Us" breadcrumbs={breadcrumbs} />
-     
-    </div>
-  );
-}
-
-
-
 const AboutPage = () => {
   const breadcrumbs = [
     { name: "Home", href: "/" },
@@ -31,15 +13,13 @@ const AboutPage = () => {
   return (
     <div>
       <MenuNavebar title="About Us" breadcrumbs={breadcrumbs} />
-                <AboutHero/>
-//             <AboutWhyChoose/>
-//             <AboutClientSaying/>
-//             <AboutFoodMenu/>
-      
-    
-     
+      <div>
+        <AboutHero />
+        <AboutWhyChoose />
+        <AboutClientSaying />
+        <AboutFoodMenu />
+      </div>
     </div>
   );
 };
-
 export default AboutPage;

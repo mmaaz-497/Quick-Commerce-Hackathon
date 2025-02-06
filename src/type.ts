@@ -5,7 +5,6 @@ type Product = {
     price:number
     originalPrice:number
     tags: string[]
-    image: any 
     imageUrl: string 
     description:string
     available:boolean
@@ -13,4 +12,6 @@ type Product = {
     slug:string
     stockLevel:number
     quantity:number
+  
   }
+  export default Product

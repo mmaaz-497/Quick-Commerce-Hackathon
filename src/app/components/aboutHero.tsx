@@ -5,9 +5,9 @@ import Image from 'next/image';
 const AboutHero = () => {
   return (
     <div className="bg-[#E0E0E0] text-black flex flex-col items-center py-10 px-4 md:px-16">
-      {/* Container */}
+   
       <div className="max-w-[1320px] w-full flex flex-col md:flex-row items-center gap-10 md:gap-20">
-        {/* Images Section */}
+       
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex flex-col gap-4">
             <Image src="/images/pagesPic1.png" alt="photo" width={336} height={536} className="w-full md:w-[336px] h-auto" />
@@ -18,7 +18,7 @@ const AboutHero = () => {
           </div>
         </div>
 
-        {/* Text Section */}
+       
         <div className="text-center md:text-left max-w-[526px]">
           <p className="text-[#FF9F0D] text-lg font-normal">About us</p>
           <h2 className="text-2xl md:text-4xl font-bold leading-tight mt-4">

@@ -5,7 +5,7 @@ import Image from 'next/image';
 const AboutWhyChoose = () => {
   return (
     <div className="bg-white text-black flex flex-col items-center px-4 md:px-16 py-10">
-      {/* Header Section */}
+     
       <div className="text-center max-w-[579px]">
         <h2 className="text-2xl md:text-4xl font-bold">Why Choose Us</h2>
         <p className="text-sm md:text-base mt-4">
@@ -13,7 +13,7 @@ const AboutWhyChoose = () => {
         </p>
       </div>
 
-      {/* Image Section */}
+      
       <div className="w-full max-w-[1320px] mt-10">
         <Image
           src="/images/pagesWhyChoosePic.png"
@@ -24,9 +24,9 @@ const AboutWhyChoose = () => {
         />
       </div>
 
-      {/* Features Section */}
+   
       <div className="w-full max-w-[1320px] flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16 mt-10">
-        {/* Best Chef */}
+        
         <div className="flex flex-col items-center text-center max-w-[359px]">
           <Image src="/images/pagesWhyChooseStudentPic.png" alt="photo" width={80} height={80} className="w-[80px] h-[80px] mb-4" />
           <h5 className="text-xl md:text-2xl font-bold">Best Chef</h5>
@@ -35,7 +35,6 @@ const AboutWhyChoose = () => {
           </p>
         </div>
 
-        {/* 120 Item Food */}
         <div className="flex flex-col items-center text-center max-w-[359px]">
           <Image src="/images/pagesWhyChooseCoffeePic.png" alt="photo" width={80} height={80} className="w-[80px] h-[80px] mb-4" />
           <h5 className="text-xl md:text-2xl font-bold">120 Item Food</h5>
@@ -44,7 +43,7 @@ const AboutWhyChoose = () => {
           </p>
         </div>
 
-        {/* Clean Environment */}
+        
         <div className="flex flex-col items-center text-center max-w-[359px]">
           <Image src="/images/pagesWhyChoosePersonPic.png" alt="photo" width={80} height={80} className="w-[80px] h-[80px] mb-4" />
           <h5 className="text-xl md:text-2xl font-bold">Clean Environment</h5>
@@ -54,7 +53,6 @@ const AboutWhyChoose = () => {
         </div>
       </div>
 
-      {/* Team Image Section */}
       <div className="w-full mt-10">
         <Image
           src="/images/pagesWhyChooseTeamMemberPic.png"
