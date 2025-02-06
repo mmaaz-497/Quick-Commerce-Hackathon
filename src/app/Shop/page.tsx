@@ -6,19 +6,6 @@ import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import Product from "@/type";
 
-export function Page (){
-  const breadcrumbs = [
-    { name: "Home", href: "/" },
-    { name: "Shop", href: "/Shop" },
-  ];
-
-  return (
-    <div>
-      <MenuNavebar title="Our Shop" breadcrumbs={breadcrumbs} />
-     
-    </div>
-  );
-}
  async function   fetchProduct():Promise<Product[]>  {
   const user = await currentUser();
   const metaData = user?.publicMetadata;
