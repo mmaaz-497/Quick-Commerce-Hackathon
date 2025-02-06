@@ -1,5 +1,6 @@
 
 
+import Product from "@/type";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -33,5 +34,4 @@ const ProductListing = ({ product }: { product: Product }) => {
     </div>
   );
 };
-
 export default ProductListing;

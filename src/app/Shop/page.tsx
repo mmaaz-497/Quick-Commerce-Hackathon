@@ -1,13 +1,12 @@
 
 
-
-
 import MenuNavebar from "../components/2Navebar";
 import { client } from '@/sanity/lib/client';
 import ProductListing from '../components/productListing';
 
 import Product from "@/type";
 
+//  Corrected function to fetch products
 async function fetchProduct(): Promise<Product[]> {
   // const user = await currentUser();
   // const metaData = user?.publicMetadata;
@@ -15,7 +14,6 @@ async function fetchProduct(): Promise<Product[]> {
   // if (!metaData?.access || !Array.isArray(metaData.access) || !metaData.access.includes("Home") || !metaData.access.includes("Shop")) {
   //   redirect("/NotAuthorized");
   // }
-
 
   const query = `*[_type == 'food'] | order(_createdAt asc) {
     name,
@@ -33,6 +31,7 @@ async function fetchProduct(): Promise<Product[]> {
   return products;
 }
 
+//  Correctly exported as a Next.js page
 export default async function ShopPage() {
   const breadcrumbs = [
     { name: "Home", href: "/" },
