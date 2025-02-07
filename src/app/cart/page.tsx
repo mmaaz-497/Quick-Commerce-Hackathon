@@ -121,7 +121,7 @@ const CartPage = () => {
                       <Button
                         onClick={() => handleDecrement(product._id)}
                         className="h-8 w-8 flex justify-center items-center p-0 bg-gray-200"
-                      >
+                      ><span>{'-'}</span>
                         <Minus size={16} />
                       </Button>
                       <span className="w-8 text-center text-sm font-medium text-gray-800">
@@ -130,7 +130,7 @@ const CartPage = () => {
                       <Button
                         onClick={() => handleIncrement(product._id)}
                         className="h-8 w-8 flex justify-center items-center p-0 bg-gray-200"
-                      >
+                      ><span>{'+'}</span>
                         <Plus size={16} />
                       </Button>
                     </div>
@@ -142,7 +142,7 @@ const CartPage = () => {
                     <Button
                       onClick={() => handleRemove(product._id)}
                       className="h-8 w-8 flex justify-center items-center p-0 text-red-500 bg-gray-100"
-                    >
+                    ><span>{'x'}</span>
                       <X size={16} />
                     </Button>
                   </td>

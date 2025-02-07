@@ -5,9 +5,9 @@ import Link from 'next/link';
 
 const FoodQuality = () => {
   return (
-    <div className="relative flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 lg:px-8 py-">
+    <div className="relative flex flex-col md:flex-row items-center justify-between px-4 sm:px-6 lg:px-8 ">
       {/* Text Content */}
-      <div className='w-full md:w-1/2 lg:max-w-[472px] mb-8 md:mb-0 md:mr-4 text-center md:text-left ml-0 md:ml-[300px]'>
+      <div className='w-full md:w-1/2 lg:max-w-[472px] mb-8 md:mb-0 md:mr-4 text-center md:text-left ml-0 md:ml-[300px] '>
         <h1 className='text-[#FF9F0D] text-lg md:text-xl lg:text-2xl mb-2 lg:mb-4'>
           Its Quick & Amusing!
         </h1>
