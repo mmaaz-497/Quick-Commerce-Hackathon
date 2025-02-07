@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import Image from 'next/image';
@@ -9,48 +7,42 @@ import Product from '@/type';
 
 const ProductDetails = ({ product }: { product: Product }) => {
   const handleClick = (product: Product) => {
-    // Parse the current cart from localStorage
     const cart = JSON.parse(localStorage.getItem('cart') || '{}');
-
-    // If the product already exists in the cart, update the quantity
     if (cart[product.name]) {
-      cart[product.name].quantity += 1;  // Correctly increment quantity by 1
+      cart[product.name].quantity += 1;
     } else {
-      // If the product doesn't exist in the cart, add it with quantity 1
       cart[product.name] = { ...product, quantity: 1 };
     }
-
-    // Save the updated cart back to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
   };
 
   const breadcrumbs = [
-    { name: "Home", href: "/" },
-    { name: "Shop Details", href: "" },
+    { name: 'Home', href: '/' },
+    { name: 'Shop Details', href: '' },
   ];
 
   return (
     <div>
       <MenuNavebar title="Shop Details" breadcrumbs={breadcrumbs} />
-      <div className="w-full bg-white">
-        <div className="flex flex-col md:flex-row gap-8 p-4">
+      <div className="w-full bg-white p-4">
+        <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
           <Image
             src={product.imageUrl}
             alt={product.name}
             width={500}
             height={500}
-            className="object-cover w-[700px] md:w-1/2 h-auto rounded ml-8 mb-[100px] mt-[100px]"
+            className="object-cover w-full md:w-1/2 h-auto rounded mb-6 md:mb-0"
           />
-          <div className="flex-1">
+          <div className="flex-1 text-center md:text-left">
             <p
-              className={`mt-2 ${product.stockLevel > 0 ? 'text-green-500' : 'text-red-500'} border rounded-lg bg-yellow-500 text-center text-white mt-[100px] w-[750px] md:w-full`}
+              className={`text-white text-lg font-semibold rounded-lg py-2 px-4 ${product.stockLevel > 0 ? 'bg-green-500' : 'bg-red-500 text-center'}`}
             >
               {product.stockLevel > 0 ? 'In Stock' : 'Out of Stock'}
             </p>
-            <h1 className="text-[40px] md:text-[80px] text-black font-bold">{product.name}</h1>
-            <p className="text-gray-700 mt-2">{product.description}</p>
+            <h1 className="text-2xl md:text-4xl font-bold text-black mt-4">{product.name}</h1>
+            <p className="text-gray-700 mt-2 text-sm md:text-base">{product.description}</p>
 
-            <p className="text-green-600 text-3xl font-bold mt-4">
+            <p className="text-green-600 text-xl md:text-3xl font-bold mt-4">
               Price: ${product.originalPrice}
             </p>
 
@@ -60,7 +52,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
             <Link href="/cart">
               <button
                 onClick={() => handleClick(product)}
-                className="border mt-4 px-8 py-2 bg-yellow-500 text-white"
+                className="border mt-4 px-6 md:px-8 py-2 bg-yellow-500 text-white text-sm md:text-base rounded-lg hover:bg-yellow-600 transition"
               >
                 Add to cart
               </button>
